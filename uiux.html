@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Showcase</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 30px 0 10px;
+      text-align: center;
+      color: #00e6e6;
+      text-shadow: 0 0 10px rgba(0,230,230,0.8);
+    }
+
+    .stars {
+      width: 2px;
+      height: 2px;
+      background: white;
+      position: absolute;
+      animation: twinkling 2s infinite ease-in-out;
+    }
+
+    @keyframes twinkling {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
+    }
+
+    .project-container{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      width: 90%;
+      max-width: 1100px;
+      margin: 20px auto 50px;
+      z-index: 2;
+    }
+
+    .project-card{
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 30px rgba(0, 230, 230, 0.6);
+    }
+
+    .project-card img {
+        display: block;
+        margin: 0 auto;      /* gambar rata tengah */
+        width: auto;         /* biar tidak ketarik full */
+        max-width: 100%;     /* tidak melebihi card */
+        max-height: 250px;   /* tinggi maksimal */
+        object-fit: contain; /* gambar tetap proporsional */
+    }
+
+
+    .project-content {
+      padding: 15px;
+    }
+
+    .project-content h3 {
+      margin-bottom: 10px;
+      color: #00e6e6;
+      font-size: 1.3rem;
+    }
+
+    .project-content p {
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+      color: #dcdcdc;
+      text-align: justify;
+    }
+
+    .btn-link {
+      display: inline-block;
+      padding: 8px 16px;
+      background: linear-gradient(135deg, #00e6e6, #0077ff);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn-link:hover {
+      background: linear-gradient(135deg, #0077ff, #00e6e6);
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 Project Showcase</h1>
+  <div class="project-container">
+    <div class="project-card">
+      <img src="img/desain3.png" alt="Project 1">
+      <div class="project-content">
+        <h3>App FreshWork</h3>
+        <p>FreshWork adalah aplikasi modern yang dirancang untuk membantu pengguna mengatur, mengelola, dan menyelesaikan pekerjaan dengan cara yang lebih segar, efisien, dan menyenangkan. Desainnya dikembangkan di Figma dengan fokus pada UI minimalis, interaktif, dan bertema teknologi modern.</p>
+        <a href="https://www.figma.com/design/mMTtDvEDKbuK40sd6G7bHQ/APPS-FreshWork?node-id=0-1&t=wA3xaDdlkVFfE5nw-1"target="_blank" class="btn-link">Lihat Project</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="img/desain4.png" alt="Project 2">
+      <div class="project-content">
+        <h3>App V-Scan</h3>
+        <p>Aplikasi Scan Sayur dirancang untuk memberikan pengalaman belanja sayur yang cepat, praktis, dan informatif. Dengan memanfaatkan teknologi pemindaian (scan) menggunakan kamera smartphone, pengguna dapat mengenali berbagai jenis sayuran secara instan. Setiap sayuran yang dipindai akan menampilkan informasi detail seperti.</p>
+        <a href="https://www.figma.com/design/lHinOCcg34iTwHqCxyw7BX/IMK?t=1FO38LP1hl0WJMH3-1" target="_blank" class="btn-link">Lihat Project</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="img/desain5.png" alt="Project 2">
+      <div class="project-content">
+        <h3>App Web BisaLearning</h3>
+        <p>Desain page Mata Pelajaran pada web BisaLearning modern dan simple</p>
+        <a href="https://www.figma.com/design/uuiCIHeKqO5gEe51txcC4b/App-Web-BisaLearning?node-id=13-309&t=WWMLoW9tYiuUnKC2-1" target="_blank" class="btn-link">Lihat Project</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    const numStars = 80;
+    for (let i = 0; i < numStars; i++) {
+      let star = document.createElement("div");
+      star.className = "stars";
+      star.style.top = Math.random() * window.innerHeight + "px";
+      star.style.left = Math.random() * window.innerWidth + "px";
+      document.body.appendChild(star);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Card</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #0f0f1a;
+    }
+
+    .profile-card {
+      background: linear-gradient(145deg, rgba(23, 22, 43, 0.9), rgba(15, 15, 25, 0.95));
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 800px;
+      color: white;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.7);
+      position: relative;
+      overflow: hidden;
+    }
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        from 180deg,
+        #ff0047,
+        #2c34ff,
+        #00ff95,
+        #ffb300,
+        #ff0047
+      );
+      animation: spin 8s linear infinite;
+      z-index: 0;
+    }
+
+    .profile-card::after {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #161629, #0f0f1a);
+      z-index: 1;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    .profile-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .profile-content h1 {
+      font-size: 28px;
+      margin: 0;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .profile-content p {
+      margin: 5px 0;
+      opacity: 0.9;
+      text-align: justify;
+    }
+
+    .profile-content a {
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .profile-content a:hover {
+      text-decoration: underline;
+    }
+
+    .profile-img {
+      position: relative;
+      z-index: 2;
+    }
+
+    .profile-img img {
+      width: 80%;
+      border-radius: 15px;
+      object-fit: cover;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    }
+
+    .social-icons {
+      margin-top: 15px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      width: 40px;
+      height: 40px;
+      background: #222;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      background: #ff0047;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profile-card">
+    <div class="profile-img">
+      <img src="img/profile.jpeg" alt="Profile">
+    </div>
+    <div class="profile-content">
+      <h1>Alfan Nur khasani</h1>
+      <p><strong>Mahasiswa Informatika Hybrid 2023 </strong><br>di Univesitas Al Azhar Indonesia</p>
+       <p>
+        Saya memiliki ketertarikan terhadap bidang <b>Web Development, Mobile App, UI/UX, dan Pentest</b>.  
+        Bidang-bidang ini membuat saya terus belajar dan mengeksplorasi teknologi terbaru untuk membangun solusi digital yang bermanfaat. Saya 
+        percaya bahwa setiap project adalah kesempatan untuk mengasah keterampilan sekaligus menambah pengalaman nyata dalam dunia teknologi.
+      </p>
+      <p>📧 alfannurhasani@gmail.com</p>
+    <div class="social-icons">
+        <a href="https://www.linkedin.com/in/alfan-nurkhasani-a407032a8/" target="_blank">
+            <i class="bi bi-linkedin">In</i>
+        </a>
+        <a href="https://www.instagram.com/call_fannnn?igsh=OXBndGVna2p0Y2lx" target="_blank">
+            <i class="bi bi-instagram">Ins</i>
+        </a>
+        <a href="https://wa.me/qr/SNXA4FKJQ4CYI1" target="_blank">
+            <i class="bi bi-instagram">Wa</i>
+        </a>
+    </div>
+  </div>
+</body>
+</html>
