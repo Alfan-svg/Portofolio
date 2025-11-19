@@ -15,26 +15,26 @@
       font-family: 'Poppins', sans-serif;
       background: transparent; 
       color: #fff;
-      min-height: 100vh; /* Gunakan min-height agar bisa discroll jika konten panjang */
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      overflow-y: auto; /* Izinkan scroll jika perlu */
+      overflow-y: auto;
       padding: 20px;
     }
 
     /* --- Hero Content --- */
     .hero {
       text-align: center;
-      max-width: 800px;
+      max-width: 900px;
       z-index: 10;
-      animation: zoomIn 0.8s ease-out;
+      animation: fadeIn 0.8s ease-out;
     }
 
-    @keyframes zoomIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .welcome-text {
@@ -44,6 +44,7 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       font-weight: 600;
+      text-shadow: 0 0 10px rgba(0, 230, 230, 0.5); /* Glow effect text */
     }
 
     h1 {
@@ -51,22 +52,25 @@
       font-weight: 800;
       margin-bottom: 15px;
       line-height: 1.1;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
     }
 
     .highlight {
       background: linear-gradient(to right, #00e6e6, #0077ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 5px rgba(0, 230, 230, 0.3));
     }
 
     .role-container {
       font-size: 1.3rem;
-      color: #d1d5db;
+      color: #e0e0e0;
       margin-bottom: 50px;
       height: 30px;
       display: flex;
       justify-content: center;
       gap: 5px;
+      font-weight: 300;
     }
 
     .cursor {
@@ -74,67 +78,85 @@
       width: 3px;
       background-color: #00e6e6;
       animation: blink 1s infinite;
+      box-shadow: 0 0 5px #00e6e6;
     }
 
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-    /* --- Navigation Buttons (Perbaikan Utama) --- */
+    /* --- NAVIGASI YANG DIPERBAIKI (High Visibility) --- */
     .cta-buttons {
       display: flex;
-      flex-wrap: wrap; /* Agar tombol turun ke bawah jika layar sempit */
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 15px; /* Jarak antar tombol */
+      gap: 15px;
       width: 100%;
     }
 
     .btn {
-      padding: 12px 25px;
-      border-radius: 50px;
+      padding: 14px 28px;
+      border-radius: 12px; /* Sedikit kotak agar terlihat modern */
       text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
+      font-weight: 600;
+      font-size: 1rem;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       
-      /* Style Default (Glassmorphism) */
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: blue;
-      backdrop-filter: blur(5px);
+      /* Style UPDATE: Lebih Solid & Kontras */
+      background: rgba(13, 25, 48, 0.7); /* Background biru gelap semi-transparan */
+      border: 2px solid rgba(0, 230, 230, 0.3); /* Border Cyan terlihat jelas */
+      color: #fff;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Bayangan agar tombol 'mengapung' */
     }
 
-    /* Efek Hover untuk semua tombol */
+    .btn i {
+      color: #00e6e6; /* Ikon warna cyan */
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+
+    /* Efek Hover: MENYALA */
     .btn:hover {
-      background: rgba(0, 230, 230, 0.15);
-      border-color: #00e6e6;
-      color: #fff;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 230, 230, 0.15);
+      background: rgba(0, 230, 230, 0.1);
+      border-color: #00e6e6; /* Border jadi terang */
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0, 230, 230, 0.4); /* Efek Glow Neon */
     }
 
-    /* Tombol Utama (About Me) dibedakan sedikit */
-    .btn-main {
-      background: linear-gradient(135deg, rgba(0, 230, 230, 0.2), rgba(0, 119, 255, 0.2));
-      border: 1px solid #00e6e6;
-      color: #fff;
-      font-weight: 600;
+    .btn:hover i {
+      color: #fff; /* Ikon jadi putih saat hover */
+      transform: scale(1.2);
     }
+
+    /* Tombol Khusus 'About Me' - Pembeda Utama */
+    .btn-main {
+      background: linear-gradient(135deg, #00e6e6, #0077ff);
+      border: none;
+      color: #090a0f; /* Teks hitam agar kontras dengan background terang */
+    }
+
+    .btn-main i { color: #090a0f; }
+
+    .btn-main:hover {
+      background: linear-gradient(135deg, #0077ff, #00e6e6);
+      box-shadow: 0 0 25px rgba(0, 230, 230, 0.6);
+      color: #fff;
+    }
+    .btn-main:hover i { color: #fff; }
 
     /* Responsive Mobile */
     @media (max-width: 768px) {
       h1 { font-size: 2.5rem; }
-      .role-container { font-size: 1rem; margin-bottom: 40px; }
-      
-      /* Di HP, tombol jadi full width atau grid 2 kolom */
+      .role-container { font-size: 1rem; margin-bottom: 30px; }
       .cta-buttons { gap: 10px; }
       .btn { 
-        padding: 10px 20px; 
+        padding: 12px 20px; 
         font-size: 0.9rem;
-        flex-grow: 1; /* Agar tombol mengisi ruang kosong */
+        width: 100%; /* Di HP tombol jadi full width agar mudah ditekan */
         justify-content: center;
       }
     }
@@ -152,23 +174,23 @@
 
     <div class="cta-buttons">
       <a href="Cyber Security.html" class="btn">
-        <i class="bi bi-shield-lock"></i> Cyber Security
+        <i class="bi bi-shield-lock-fill"></i> Cyber Security
       </a>
       
       <a href="uiux.html" class="btn">
-        <i class="bi bi-palette"></i> UI/UX
+        <i class="bi bi-palette-fill"></i> UI/UX Design
       </a>
       
       <a href="web.html" class="btn">
-        <i class="bi bi-laptop"></i> Web Dev
+        <i class="bi bi-code-slash"></i> Web Dev
       </a>
       
       <a href="certificate.html" class="btn">
-        <i class="bi bi-award"></i> Certificate
+        <i class="bi bi-patch-check-fill"></i> Certificate
       </a>
 
       <a href="about.html" class="btn btn-main">
-        <i class="bi bi-person-circle"></i> About Me
+        <i class="bi bi-person-lines-fill"></i> About Me
       </a>
     </div>
   </main>
