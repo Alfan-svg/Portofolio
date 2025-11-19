@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About Me - Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   
   <style>
-    /* --- Reset & Basics (Sama dengan halaman Project) --- */
+    /* --- Reset & Basics --- */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
@@ -16,9 +17,10 @@
       color: #e0e0e0;
       min-height: 100vh;
       display: flex;
+      flex-direction: column; /* Ubah jadi column agar navbar di atas */
       align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
+      padding-top: 100px; /* Memberi ruang untuk Navbar Fixed */
+      padding-bottom: 40px;
       overflow-x: hidden;
     }
 
@@ -34,9 +36,60 @@
       100% { opacity: 0; transform: scale(0.5); }
     }
 
+    /* --- NAVBAR STYLE (Baru) --- */
+    .navbar {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: center; /* Menu di tengah */
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-btn {
+      text-decoration: none;
+      color: #a0aab5;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(0, 230, 230, 0.3);
+    }
+
+    /* Tombol Aktif (Halaman ini) */
+    .nav-btn.active {
+      background: rgba(0, 230, 230, 0.15);
+      color: #00e6e6;
+      border-color: #00e6e6;
+      box-shadow: 0 0 10px rgba(0, 230, 230, 0.2);
+    }
+
     /* --- Main Container Card --- */
     .about-card {
-      width: 100%;
+      width: 90%;
       max-width: 1000px;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -44,13 +97,13 @@
       border-radius: 20px;
       box-shadow: 0 20px 50px rgba(0,0,0,0.5);
       display: grid;
-      grid-template-columns: 350px 1fr; /* Kolom Kiri (Foto) & Kanan (Teks) */
+      grid-template-columns: 350px 1fr;
       overflow: hidden;
-      animation: fadeIn 1s ease-out;
+      animation: slideUp 0.8s ease-out;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -67,8 +120,8 @@
     }
 
     .profile-img-wrapper {
-      width: 250px;
-      height: 250px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       padding: 5px;
       background: linear-gradient(135deg, #00e6e6, #0077ff);
@@ -81,11 +134,11 @@
       height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid #1b2735; /* Mencocokkan warna background body */
+      border: 4px solid #1b2735;
     }
 
     .profile-name {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       font-weight: 700;
       color: #fff;
       margin-bottom: 5px;
@@ -93,7 +146,7 @@
 
     .profile-role {
       color: #00e6e6;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 1px;
       margin-bottom: 25px;
@@ -110,20 +163,22 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
+      color: #a0aab5;
       text-decoration: none;
       transition: 0.3s;
       border: 1px solid rgba(255,255,255,0.1);
+      font-size: 1.2rem;
     }
 
     .social-btn:hover {
       background: #00e6e6;
       color: #000;
       transform: translateY(-3px);
+      box-shadow: 0 0 15px rgba(0, 230, 230, 0.5);
     }
 
     /* --- Right Side: Content Area --- */
@@ -142,26 +197,21 @@
     .section-title::after {
       content: '';
       position: absolute;
-      width: 50%;
+      width: 60%;
       height: 3px;
       background: linear-gradient(to right, #00e6e6, transparent);
-      bottom: -8px;
+      bottom: -5px;
       left: 0;
     }
 
     .bio-text {
-      font-size: 1rem;
-      line-height: 1.8;
+      font-size: 0.95rem;
+      line-height: 1.7;
       color: #d1d5db;
       margin-bottom: 30px;
       text-align: justify;
     }
 
-    /* --- Skills Section --- */
-    .skills-wrapper {
-      margin-top: 20px;
-    }
-    
     .skills-grid {
       display: flex;
       flex-wrap: wrap;
@@ -169,14 +219,15 @@
     }
 
     .skill-tag {
-      background: rgba(0, 230, 230, 0.1);
+      background: rgba(0, 230, 230, 0.05);
       border: 1px solid rgba(0, 230, 230, 0.3);
       color: #00e6e6;
-      padding: 8px 16px;
+      padding: 6px 14px;
       border-radius: 20px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 500;
       transition: 0.3s;
+      cursor: default;
     }
 
     .skill-tag:hover {
@@ -185,72 +236,76 @@
       box-shadow: 0 0 15px rgba(0, 230, 230, 0.5);
     }
 
-    /* --- Navigation Button --- */
-    .btn-back {
-      display: inline-block;
-      margin-top: 40px;
-      text-decoration: none;
-      color: #a0aab5;
-      font-size: 0.9rem;
-      transition: 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn-back:hover {
-      color: #fff;
-      transform: translateX(-5px);
-    }
-
     /* --- Responsive --- */
-    @media (max-width: 768px) {
+    @media (max-width: 800px) {
       .about-card {
-        grid-template-columns: 1fr; /* Stack vertikal di HP */
-        height: auto;
+        grid-template-columns: 1fr;
+        margin-top: 20px;
       }
       .profile-section {
-        padding: 40px 20px 20px;
         border-right: none;
         border-bottom: 1px solid rgba(255,255,255,0.1);
       }
-      .bio-content {
-        padding: 30px 25px;
+      .nav-btn span {
+        display: none; /* Sembunyikan teks menu di HP, sisakan ikon */
+      }
+      .nav-btn {
+        padding: 10px;
       }
     }
   </style>
 </head>
 <body>
 
+  <nav class="navbar">
+    <div class="nav-links">
+      <a href="index.html" class="nav-btn">
+        <i class="bi bi-house-door"></i> <span>Home</span>
+      </a>
+      <a href="Cyber Security.html" class="nav-btn">
+        <i class="bi bi-shield-lock"></i> <span>Cyber Security</span>
+      </a>
+      <a href="uiux.html" class="nav-btn">
+        <i class="bi bi-palette"></i> <span>UI/UX</span>
+      </a>
+      <a href="web.html" class="nav-btn">
+        <i class="bi bi-code-slash"></i> <span>Web Dev</span>
+      </a>
+      <a href="certificate.html" class="nav-btn">
+        <i class="bi bi-award"></i> <span>Certificaate</span>
+      </a>
+      <a href="about.html" class="nav-btn active">
+        <i class="bi bi-person-circle"></i> <span>About</span>
+      </a>
+    </div>
+  </nav>
+
   <div class="about-card">
+    
     <div class="profile-section">
       <div class="profile-img-wrapper">
-        <img src="img/alfan.jpg" alt="Foto Profil" class="profile-img">
+        <img src="img/alfan.jpg" alt="Foto Profil" class="profile-img" onerror="this.src='https://via.placeholder.com/200'">
       </div>
       <h1 class="profile-name">Alfan Nur Khasani</h1>
       <p class="profile-role">Student & Cyber Security Enthusiast</p>
       
       <div class="social-links">
-        <a href="#" class="social-btn" title="GitHub">GH</a>
-        <a href="#" class="social-btn" title="LinkedIn">LI</a>
-        <a href="#" class="social-btn" title="Email">@</a>
+        <a href="#" class="social-btn" title="GitHub"><i class="bi bi-github"></i></a>
+        <a href="https://www.linkedin.com/in/alfan-nurkhasani-a407032a8" class="social-btn" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+        <a href="https://www.instagram.com/call_fannnn?igsh=OXBndGVna2p0Y2lx" class="social-btn" title="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="alfannurhasani@gmail.com" class="social-btn" title="Email"><i class="bi bi-envelope"></i></a>
       </div>
     </div>
 
     <div class="bio-content">
-      <a href="" class="btn-back">← Kembali ke Projects</a>
-      <br>
-
       <h2 class="section-title">Profile</h2>
       <div class="bio-text">
         <p>
           Halo! Saya adalah mahasiswa di <strong>Universitas Al Azhar Indonesia</strong> yang memiliki ketertarikan mendalam pada dunia teknologi, seperti pada bidang <em>Machine Learning</em> dan <em>Cybersecurity</em>.
         </p>
-        <br>
         <p>
           Saat ini saya sedang aktif mengeksplorasi implementasi kecerdasan buatan untuk analisis data kesehatan, serta mendalami teknik keamanan jaringan seperti analisis malware dan sistem deteksi intrusi (IDS/IPS). Saya percaya bahwa kombinasi antara keamanan data dan kecerdasan buatan adalah kunci teknologi masa depan.
         </p>
-        <br>
         <p>
           Selain itu, saya juga senang bereksperimen dengan pengembangan web modern menggunakan teknologi seperti Bootstrap untuk memvisualisasikan hasil analisis data saya.
         </p>
@@ -259,14 +314,14 @@
       <h2 class="section-title">Keahlian & Tools</h2>
       <div class="skills-wrapper">
         <div class="skills-grid">
-          <span class="skill-tag">Machine Learning</span>
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">Cyber Security</span>
-          <span class="skill-tag">Network Analysis</span>
-          <span class="skill-tag">Web Programming</span>
-          <span class="skill-tag">Linux</span>
-          <span class="skill-tag">IDS / IPS</span>
-          <span class="skill-tag">UI/UX</span>
+          <span class="skill-tag"><i class="bi bi-robot"></i> Machine Learning</span>
+          <span class="skill-tag"><i class="bi bi-filetype-py"></i> Python</span>
+          <span class="skill-tag"><i class="bi bi-shield-check"></i> Cyber Security</span>
+          <span class="skill-tag"><i class="bi bi-activity"></i> Network Analysis</span>
+          <span class="skill-tag"><i class="bi bi-globe"></i> Web Programming</span>
+          <span class="skill-tag"><i class="bi bi-terminal"></i> Linux</span>
+          <span class="skill-tag"><i class="bi bi-bricks"></i> IDS / IPS</span>
+          <span class="skill-tag"><i class="bi bi-vector-pen"></i> UI/UX</span>
         </div>
       </div>
 
@@ -274,7 +329,7 @@
   </div>
 
   <script>
-    // Script Bintang (Sama persis dengan halaman depan agar konsisten)
+    // Script Bintang
     const numStars = 100;
     const body = document.body;
     
