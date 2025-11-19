@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Project Showcase</title>
-   <style>
+  <title>Portfolio Project Showcase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- Reset & Basics --- */
     * {
       margin: 0;
       padding: 0;
@@ -12,151 +15,267 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
+      font-family: 'Poppins', sans-serif;
       background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      color: #e0e0e0;
+      min-height: 100vh;
       overflow-x: hidden;
       position: relative;
+      padding-bottom: 50px; /* Ruang untuk footer/scroll */
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin: 30px 0 10px;
-      text-align: center;
-      color: #00e6e6;
-      text-shadow: 0 0 10px rgba(0,230,230,0.8);
-    }
-
+    /* --- Background Animation --- */
     .stars {
       width: 2px;
       height: 2px;
       background: white;
       position: absolute;
-      animation: twinkling 2s infinite ease-in-out;
+      border-radius: 50%;
+      opacity: 0;
+      animation: twinkling 3s infinite ease-in-out;
+      z-index: -1; /* Pastikan di belakang konten */
     }
 
     @keyframes twinkling {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 1; }
+      0% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 0.8; transform: scale(1.2); }
+      100% { opacity: 0; transform: scale(0.5); }
     }
 
-    .project-container{
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
+    /* --- Header --- */
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      background: linear-gradient(to right, #00e6e6, #0077ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    p.subtitle {
+      font-size: 1rem;
+      color: #a0aab5;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* --- Grid System --- */
+    .container {
       width: 90%;
-      max-width: 1100px;
-      margin: 20px auto 50px;
-      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      /* Grid responsif: otomatis menyesuaikan kolom */
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      padding: 20px 0;
     }
 
-    .project-card{
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
+    /* --- Card Design --- */
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      flex-direction: column;
+      height: 100%; /* Agar tinggi card seragam */
+      position: relative;
     }
 
     .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 30px rgba(0, 230, 230, 0.6);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 230, 230, 0.15);
+      border-color: rgba(0, 230, 230, 0.3);
     }
 
-    .project-card img {
-        display: block;
-        margin: 0 auto;      /* gambar rata tengah */
-        width: auto;         /* biar tidak ketarik full */
-        max-width: 100%;     /* tidak melebihi card */
-        max-height: 250px;   /* tinggi maksimal */
-        object-fit: contain; /* gambar tetap proporsional */
+    /* Image container agar rapi */
+    .card-image {
+      width: 100%;
+      height: 220px;
+      background: #0f151e; /* Background gelap untuk gambar transparan */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ganti 'contain' jika ingin gambar utuh tanpa potong, 'cover' untuk full area */
+      transition: transform 0.5s ease;
+    }
 
+    .project-card:hover .card-image img {
+      transform: scale(1.05);
+    }
+
+    /* Content styling */
     .project-content {
-      padding: 15px;
+      padding: 25px;
+      flex-grow: 1; /* Mendorong tombol ke bawah rata */
+      display: flex;
+      flex-direction: column;
     }
 
     .project-content h3 {
-      margin-bottom: 10px;
-      color: #00e6e6;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 12px;
+      font-weight: 600;
     }
 
     .project-content p {
       font-size: 0.95rem;
-      margin-bottom: 15px;
-      color: #dcdcdc;
-      text-align: justify;
+      color: #b0b8c4;
+      line-height: 1.6;
+      margin-bottom: 25px;
+      flex-grow: 1; /* Mengisi ruang kosong agar tombol sejajar di bawah */
     }
 
+    /* Button Styling */
     .btn-link {
-      display: inline-block;
-      padding: 8px 16px;
-      background: linear-gradient(135deg, #00e6e6, #0077ff);
-      color: #fff;
+      text-align: center;
+      display: block;
+      width: 100%;
+      padding: 12px 0;
+      background: transparent;
+      color: #00e6e6;
+      border: 1px solid #00e6e6;
       border-radius: 8px;
       text-decoration: none;
-      transition: background 0.3s ease;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     .btn-link:hover {
-      background: linear-gradient(135deg, #0077ff, #00e6e6);
+      background: #00e6e6;
+      color: #090a0f;
+      box-shadow: 0 0 15px rgba(0, 230, 230, 0.6);
+    }
+
+    /* Label kategori kecil (Opsional) */
+    .tag {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(0,0,0,0.6);
+      color: #00e6e6;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid rgba(0, 230, 230, 0.3);
+    }
+
+    /* Responsive Mobile */
+    @media (max-width: 600px) {
+      h1 { font-size: 2.2rem; }
+      .container { padding: 10px; }
     }
   </style>
 </head>
 <body>
-  <h1>🚀 Project Showcase</h1>
-    <div class="project-container">
-     <div class="project-card">
-      <img src="img/IDS.png" alt="Project 2">
+
+  <header>
+    <h1>Project Showcase</h1>
+    <p class="subtitle">Kumpulan dokumentasi topologi jaringan dan analisis keamanan siber.</p>
+  </header>
+
+  <div class="container">
+    
+    <div class="project-card">
+      <div class="tag">Networking</div>
+      <div class="card-image">
+        <img src="img/IDS.png" alt="IDS Topology" onerror="this.src='https://images.unsplash.com/photo-1558494949-ef526b004297?auto=format&fit=crop&w=800&q=80'">
+      </div>
       <div class="project-content">
-        <h3>IDS</h3>
-        <p>Ini adalah desain topologi jaringan yang di buat untuk implementasi IDS</p>
+        <h3>Implementasi IDS</h3>
+        <p>Perancangan dan desain topologi jaringan yang difokuskan untuk implementasi <i>Intrusion Detection System</i> (IDS) guna memantau lalu lintas mencurigakan.</p>
         <a href="https://drive.google.com/file/d/1HYzx10kYpKuZh8HjDGAShKmsCydebx1q/view?usp=sharing" target="_blank" class="btn-link">Lihat Project</a>
       </div>
     </div>
-    <div class="project-container">
-     <div class="project-card">
-      <img src="img/IPS.png" alt="Project 3">
+
+    <div class="project-card">
+      <div class="tag">Security</div>
+      <div class="card-image">
+        <img src="img/IPS.png" alt="IPS Topology" onerror="this.src='https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80'">
+      </div>
       <div class="project-content">
-        <h3>IDS</h3>
-        <p>Ini adalah desain topologi jaringan yang di buat untuk implementasi IPS</p>
+        <h3>Implementasi IPS</h3>
+        <p>Desain topologi jaringan yang dikembangkan untuk <i>Intrusion Prevention System</i> (IPS), memungkinkan pencegahan ancaman secara <i>real-time</i> dalam jaringan.</p>
         <a href="https://drive.google.com/file/d/1aC44-yy8sAhzCjntD5wwGxWmp6q3yoPj/view?usp=sharing" target="_blank" class="btn-link">Lihat Project</a>
       </div>
     </div>
-    <div class="project-container">
+
     <div class="project-card">
-      <img src="img/hasil.png" alt="Project 1">
+      <div class="tag">Penetration Testing</div>
+      <div class="card-image">
+        <img src="img/hasil.png" alt="Scanning Result" onerror="this.src='https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80'">
+      </div>
       <div class="project-content">
-        <h3>Tools Scanning Dir/File</h3>
-        <p>Pemindaian terhadap situs https://mieayampemalang.netlify.app/ dilakukan untuk mengecek keberadaan direktori dan file sensitif seperti panel admin, backup, atau file konfigurasi. Hasilnya menunjukkan bahwa semua URL yang diuji (misalnya /admin, /admin.php, /admin.zip, /admin_2023.*) mengembalikan status 404 – tidak ditemukan.</p>
+        <h3>Vulnerability Scanning</h3>
+        <p>Analisis direktori sensitif pada target web. Pengujian meliputi pencarian panel admin, file backup, dan konfigurasi tersembunyi untuk memastikan keamanan server.</p>
         <a href="https://github.com/Alfan-svg/scanning" target="_blank" class="btn-link">Lihat Project</a>
       </div>
     </div>
+
   </div>
+
   <script>
-    const numStars = 80;
+    // Script Bintang yang Dioptimalkan
+    const numStars = 100;
+    const body = document.body;
+    
     function createStars() {
+      // Hapus bintang lama jika resize
       document.querySelectorAll('.stars').forEach(star => star.remove());
+      
+      // Dapatkan tinggi dokumen penuh
+      const docHeight = Math.max(body.scrollHeight, body.offsetHeight);
+      const docWidth = body.clientWidth;
+
       for (let i = 0; i < numStars; i++) {
         let star = document.createElement("div");
         star.className = "stars";
-        star.style.top = Math.random() * window.innerHeight + "px";
-        star.style.left = Math.random() * window.innerWidth + "px";
-        star.style.animationDelay = (Math.random() * 2) + "s"; // delay random
-        document.body.appendChild(star);
+        
+        // Posisi random di seluruh halaman
+        star.style.top = Math.random() * docHeight + "px";
+        star.style.left = Math.random() * docWidth + "px";
+        
+        // Ukuran random untuk variasi
+        let size = Math.random() * 3;
+        star.style.width = size + "px";
+        star.style.height = size + "px";
+        
+        // Delay animasi random agar tidak serentak
+        star.style.animationDelay = (Math.random() * 5) + "s";
+        star.style.animationDuration = (Math.random() * 2 + 2) + "s"; // 2s sampai 4s
+        
+        body.appendChild(star);
       }
     }
 
     createStars();
-    window.addEventListener('resize', createStars);
+    
+    // Regenerasi bintang saat layar diubah ukurannya
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(createStars, 200);
+    });
   </script>
 </body>
 </html>
