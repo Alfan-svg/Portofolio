@@ -1,1 +1,303 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Me - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* --- Reset & Basics (Sama dengan halaman Project) --- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      overflow-x: hidden;
+    }
+
+    /* --- Background Animation --- */
+    .stars {
+      width: 2px; height: 2px; background: white; position: absolute;
+      border-radius: 50%; opacity: 0; animation: twinkling 3s infinite ease-in-out;
+      z-index: -1;
+    }
+    @keyframes twinkling {
+      0% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 0.8; transform: scale(1.2); }
+      100% { opacity: 0; transform: scale(0.5); }
+    }
+
+    /* --- Main Container Card --- */
+    .about-card {
+      width: 100%;
+      max-width: 1000px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      display: grid;
+      grid-template-columns: 350px 1fr; /* Kolom Kiri (Foto) & Kanan (Teks) */
+      overflow: hidden;
+      animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- Left Side: Profile Area --- */
+    .profile-section {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 40px 30px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .profile-img-wrapper {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      padding: 5px;
+      background: linear-gradient(135deg, #00e6e6, #0077ff);
+      box-shadow: 0 0 20px rgba(0, 230, 230, 0.4);
+      margin-bottom: 20px;
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #1b2735; /* Mencocokkan warna background body */
+    }
+
+    .profile-name {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    .profile-role {
+      color: #00e6e6;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: auto;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .social-btn:hover {
+      background: #00e6e6;
+      color: #000;
+      transform: translateY(-3px);
+    }
+
+    /* --- Right Side: Content Area --- */
+    .bio-content {
+      padding: 40px;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: #fff;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(to right, #00e6e6, transparent);
+      bottom: -8px;
+      left: 0;
+    }
+
+    .bio-text {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #d1d5db;
+      margin-bottom: 30px;
+      text-align: justify;
+    }
+
+    /* --- Skills Section --- */
+    .skills-wrapper {
+      margin-top: 20px;
+    }
+    
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-tag {
+      background: rgba(0, 230, 230, 0.1);
+      border: 1px solid rgba(0, 230, 230, 0.3);
+      color: #00e6e6;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .skill-tag:hover {
+      background: #00e6e6;
+      color: #000;
+      box-shadow: 0 0 15px rgba(0, 230, 230, 0.5);
+    }
+
+    /* --- Navigation Button --- */
+    .btn-back {
+      display: inline-block;
+      margin-top: 40px;
+      text-decoration: none;
+      color: #a0aab5;
+      font-size: 0.9rem;
+      transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-back:hover {
+      color: #fff;
+      transform: translateX(-5px);
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      .about-card {
+        grid-template-columns: 1fr; /* Stack vertikal di HP */
+        height: auto;
+      }
+      .profile-section {
+        padding: 40px 20px 20px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .bio-content {
+        padding: 30px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="about-card">
+    <div class="profile-section">
+      <div class="profile-img-wrapper">
+        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=500&q=80" alt="Foto Profil" class="profile-img">
+      </div>
+      <h1 class="profile-name">[Nama Anda]</h1>
+      <p class="profile-role">Student & Cyber Security Enthusiast</p>
+      
+      <div class="social-links">
+        <a href="#" class="social-btn" title="GitHub">GH</a>
+        <a href="#" class="social-btn" title="LinkedIn">LI</a>
+        <a href="#" class="social-btn" title="Email">@</a>
+      </div>
+    </div>
+
+    <div class="bio-content">
+      <a href="index.html" class="btn-back">← Kembali ke Projects</a>
+      <br>
+
+      <h2 class="section-title">Biografi</h2>
+      <div class="bio-text">
+        <p>
+          Halo! Saya adalah mahasiswa di <strong>Universitas Al Azhar Indonesia</strong> yang memiliki ketertarikan mendalam pada dunia teknologi, khususnya di bidang <em>Machine Learning</em> dan <em>Cybersecurity</em>.
+        </p>
+        <br>
+        <p>
+          Saat ini saya sedang aktif mengeksplorasi implementasi kecerdasan buatan untuk analisis data kesehatan, serta mendalami teknik keamanan jaringan seperti analisis malware dan sistem deteksi intrusi (IDS/IPS). Saya percaya bahwa kombinasi antara keamanan data dan kecerdasan buatan adalah kunci teknologi masa depan.
+        </p>
+        <br>
+        <p>
+          Selain itu, saya juga senang bereksperimen dengan pengembangan web modern menggunakan teknologi seperti Next.js untuk memvisualisasikan hasil analisis data saya.
+        </p>
+      </div>
+
+      <h2 class="section-title">Keahlian & Tools</h2>
+      <div class="skills-wrapper">
+        <div class="skills-grid">
+          <span class="skill-tag">Machine Learning</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Cyber Security</span>
+          <span class="skill-tag">Network Analysis</span>
+          <span class="skill-tag">Web Programming</span>
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">IDS / IPS</span>
+          <span class="skill-tag">UI/UX</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Script Bintang (Sama persis dengan halaman depan agar konsisten)
+    const numStars = 100;
+    const body = document.body;
+    
+    function createStars() {
+      document.querySelectorAll('.stars').forEach(star => star.remove());
+      const docHeight = Math.max(body.scrollHeight, body.offsetHeight);
+      const docWidth = body.clientWidth;
+
+      for (let i = 0; i < numStars; i++) {
+        let star = document.createElement("div");
+        star.className = "stars";
+        star.style.top = Math.random() * docHeight + "px";
+        star.style.left = Math.random() * docWidth + "px";
+        let size = Math.random() * 3;
+        star.style.width = size + "px";
+        star.style.height = size + "px";
+        star.style.animationDelay = (Math.random() * 5) + "s";
+        body.appendChild(star);
+      }
+    }
+    createStars();
+    window.addEventListener('resize', createStars);
+  </script>
+
+</body>
+</html>
