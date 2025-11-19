@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Project Showcase</title>
-  <style>
+   <style>
     * {
       margin: 0;
       padding: 0;
@@ -26,7 +26,7 @@
 
     h1 {
       font-size: 2.5rem;
-      margin: 20px 0;
+      margin: 30px 0 10px;
       text-align: center;
       color: #00e6e6;
       text-shadow: 0 0 10px rgba(0,230,230,0.8);
@@ -45,36 +45,39 @@
       50% { opacity: 1; }
     }
 
-    .project-container {
+    .project-container{
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
       width: 90%;
       max-width: 1100px;
-      margin: 20px auto;
+      margin: 20px auto 50px;
       z-index: 2;
     }
 
-    .project-card {
+    .project-card{
       background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(10px);
       border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-      border: 1px solid rgba(0, 230, 230, 0.2);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .project-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 12px 35px rgba(0, 230, 230, 0.7);
+      transform: translateY(-8px);
+      box-shadow: 0 8px 30px rgba(0, 230, 230, 0.6);
     }
 
     .project-card img {
-      width: 100%;
-      aspect-ratio: 16/9;
-      object-fit: cover;
+        display: block;
+        margin: 0 auto;      /* gambar rata tengah */
+        width: auto;         /* biar tidak ketarik full */
+        max-width: 100%;     /* tidak melebihi card */
+        max-height: 250px;   /* tinggi maksimal */
+        object-fit: contain; /* gambar tetap proporsional */
     }
+
 
     .project-content {
       padding: 15px;
@@ -90,7 +93,6 @@
       font-size: 0.95rem;
       margin-bottom: 15px;
       color: #dcdcdc;
-      line-height: 1.6;
       text-align: justify;
     }
 
@@ -101,12 +103,11 @@
       color: #fff;
       border-radius: 8px;
       text-decoration: none;
-      transition: background 0.3s ease, transform 0.3s;
+      transition: background 0.3s ease;
     }
 
     .btn-link:hover {
       background: linear-gradient(135deg, #0077ff, #00e6e6);
-      transform: scale(1.05);
     }
   </style>
 </head>
