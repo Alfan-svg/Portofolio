@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
   
   <style>
-    /* --- Reset & Basics --- */
     * {
       margin: 0;
       padding: 0;
@@ -25,8 +24,6 @@
       padding-top: 100px; /* Ruang untuk Navbar Fixed */
       padding-bottom: 50px;
     }
-
-    /* --- Background Animation --- */
     .stars {
       width: 2px;
       height: 2px;
@@ -43,8 +40,6 @@
       50% { opacity: 0.8; transform: scale(1.2); }
       100% { opacity: 0; transform: scale(0.5); }
     }
-
-    /* --- NAVBAR STYLE (Seragam dengan About) --- */
     .navbar {
       width: 100%;
       position: fixed;
@@ -86,19 +81,15 @@
       background: rgba(255, 255, 255, 0.1);
       border-color: rgba(0, 230, 230, 0.3);
     }
-
-    /* Tombol Aktif */
     .nav-btn.active {
       background: rgba(0, 230, 230, 0.15);
       color: #00e6e6;
       border-color: #00e6e6;
       box-shadow: 0 0 10px rgba(0, 230, 230, 0.2);
     }
-
-    /* --- Header --- */
     header {
       text-align: center;
-      padding: 20px 20px 40px; /* Padding atas dikurangi karena ada body padding-top */
+      padding: 20px 20px 40px; 
       animation: fadeInDown 0.8s ease-out;
     }
 
@@ -118,8 +109,6 @@
       max-width: 600px;
       margin: 0 auto;
     }
-
-    /* --- Grid System --- */
     .container {
       width: 90%;
       max-width: 1200px;
@@ -130,8 +119,6 @@
       padding: 20px 0;
       animation: fadeInUp 1s ease-out;
     }
-
-    /* --- Card Design --- */
     .project-card {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -229,8 +216,6 @@
       font-weight: 600;
       border: 1px solid rgba(0, 230, 230, 0.3);
     }
-
-    /* Animasi */
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -239,12 +224,10 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    /* Responsive Mobile */
     @media (max-width: 768px) {
       h1 { font-size: 2.2rem; }
       .container { padding: 10px; }
-      .nav-btn span { display: none; } /* Sembunyikan teks menu di HP */
+      .nav-btn span { display: none; } 
       .nav-btn { padding: 10px; }
     }
   </style>
@@ -316,11 +299,24 @@
         <a href="https://github.com/Alfan-svg/scanning" target="_blank" class="btn-link">Lihat Project</a>
       </div>
     </div>
+    
+    <div class="project-card">
+      <div class="tag">Log Analysis & Threat
+Modeling (TAVS)</div>
+      <div class="card-image">
+        <img src="img/hasil.png" alt="Scanning Result" onerror="this.src='https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80'">
+      </div>
+      <div class="project-content">
+        <h3>Vulnerability Scanning</h3>
+        <p>Analisis log merupakan langkah penting dalam keamanan komputer untuk mendeteksi aktivitas
+abnormal, percobaan serangan, serta mengidentifikasi pengguna yang terlibat dalam suatu kejadian.</p>
+        <a href="https://github.com/Alfan-svg/scanning" target="_blank" class="btn-link">Lihat Project</a>
+      </div>
+    </div>
 
   </div>
 
   <script>
-    // Script Bintang
     const numStars = 100;
     const body = document.body;
     
