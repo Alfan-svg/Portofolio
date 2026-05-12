@@ -8,11 +8,21 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
         });
 
-        // Close menu when a link is clicked
+        // Close menu when a link is clicked only on mobile
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function() {
-                navMenu.style.display = 'none';
+                if (window.innerWidth <= 768) {
+                    navMenu.style.display = 'none';
+                }
             });
+        });
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                navMenu.style.display = 'flex';
+            } else {
+                navMenu.style.display = 'none';
+            }
         });
     }
 
